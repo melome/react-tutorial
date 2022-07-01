@@ -28,20 +28,22 @@ class App extends Component {
   }
 
   render () {
-    return <div className="App">
-      <table className="customTable">
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-      </tr>
+    return <table className="App customTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>          
       {!this.state.loading? this.state.users.map(user => 
-        <tr>
+        <tr key={user.id.value}>
           <td>{user.name.first} {user.name.last}</td>
-          <td>{user.email}</td>
+          <td><a href={user.email}>{user.email}</a></td>
         </tr>
-      ): <div>Loading...</div>}
-      </table>
-    </div>;
+      ): <tr><td colSpan={2} className="loader">Loading...</td></tr>}
+        </tbody>        
+      </table>;
   } 
 }
 
