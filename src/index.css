@@ -32,3 +32,7 @@ table.customTable td, table.customTable th {
 table.customTable thead {
   background-color: #7ea8f8;
 }
+
+.loader {
+  text-align: center;
+}
