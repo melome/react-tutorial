@@ -1,25 +1,48 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to React, Shanley!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props)
+    //state
+    this.state = {
+      users:[],
+      loading: false
+    }
+  }
+  
+  getUser() {
+    this.setState({
+      loading:true
+    })
+    axios('https://api.randomuser.me/?nat=US&results=5').then(response => 
+      this.setState({
+        users: response.data.results,
+        loading: false
+      })
+    );
+  }
+
+  componentDidMount() {
+    this.getUser()
+  }
+
+  render () {
+    return <div className="App">
+      <table className="customTable">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+      {!this.state.loading? this.state.users.map(user => 
+        <tr>
+          <td>{user.name.first} {user.name.last}</td>
+          <td>{user.email}</td>
+        </tr>
+      ): <div>Loading...</div>}
+      </table>
+    </div>;
+  } 
 }
 
 export default App;
