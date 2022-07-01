@@ -29,13 +29,18 @@ class App extends Component {
 
   render () {
     return <div className="App">
+      <table className="customTable">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
       {!this.state.loading? this.state.users.map(user => 
-        <div key={user.login.uuid}>
-          <p><strong>Name:</strong> {user.name.first} {user.name.last}</p>
-          <p><strong>Email:</strong> {user.email}</p>
-          <hr />
-        </div>
+        <tr>
+          <td>{user.name.first} {user.name.last}</td>
+          <td>{user.email}</td>
+        </tr>
       ): <div>Loading...</div>}
+      </table>
     </div>;
   } 
 }
