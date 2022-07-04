@@ -37,6 +37,7 @@ class App extends Component {
   }
 
   render () {
+    const {loading, users} = this.state
     return <table className="App customTable">
         <thead>
           <tr>
@@ -46,15 +47,15 @@ class App extends Component {
         </thead>
         <tbody>
 
-      {!this.state.loading? 
-        this.state.users.map(user => 
+      {!loading? 
+        users.map(user => 
         <tr key={user.id.value}>
           <td>{user.name.first} {user.name.last}</td>
           <td><a href={user.email}>{user.email}</a></td>
         </tr>
       ): <Loading message="Loading users, please wait..."/>}
         </tbody>   
-      {!this.state.loading?(
+      {!loading?(
         <tfoot className="table-action">
           <tr>
             <td colSpan={2} className="load-button table-actions">
