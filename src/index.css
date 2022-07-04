@@ -18,7 +18,6 @@ table.customTable {
   border-collapse: collapse;
   border-width: 2px;
   border-color: #7ea8f8;
-  border-style: solid;
   color: #000000;
 }
 
@@ -35,4 +34,26 @@ table.customTable thead {
 
 .loader {
   text-align: center;
+}
+
+.btn {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 12px;
+  background: #7ea8f8;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  border: 0px;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #5d92f3;  
+}
+
+/* Button Row */
+.table-actions {
+  border-style: none !important;
 }
