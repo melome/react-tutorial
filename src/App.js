@@ -21,7 +21,7 @@ class App extends Component {
     axios('https://api.randomuser.me/?nat=US&results=5').then(response => 
       this.setState({
         users: [...this.state.users, ...response.data.results], //merging existing and newly loaded users
-        loading: true
+        loading: false
       })
     );
   }
